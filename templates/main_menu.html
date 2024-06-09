@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главное меню</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Главное меню</h1>
+        <p>Модель дрона: {{ drone_state['model'] }}</p>
+        <p>Батарея: {{ drone_state['battery'] }}%</p>
+        <p>Текущая задача: {{ drone_state['current_task'] }}</p>
+        <p>Статус: {{ 'Подключен' if drone_state['connected'] else 'Не подключен' }}</p>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('combat_operations') }}">Боевые операции</a></li>
+                <li><a href="{{ url_for('patrolling') }}">Патрулирование</a></li>
+                <li><a href="{{ url_for('shutdown') }}">Выключение</a></li>
+                <li><a href="{{ url_for('log_menu') }}">Журнал действий</a></li>
+                <li><a href="{{ url_for('monitoring') }}">Мониторинг</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

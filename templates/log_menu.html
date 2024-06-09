@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Журнал действий</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Журнал действий</h1>
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Время</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mock data for demonstration -->
+                <tr>
+                    <td>2023-06-09</td>
+                    <td>12:00:00</td>
+                    <td>Патрулирование</td>
+                </tr>
+                <tr>
+                    <td>2023-06-09</td>
+                    <td>14:00:00</td>
+                    <td>Зарядка</td>
+                </tr>
+                <tr>
+                    <td>2023-06-09</td>
+                    <td>16:00:00</td>
+                    <td>Мониторинг</td>
+                </tr>
+                <tr>
+                    <td>2023-06-10</td>
+                    <td>10:00:00</td>
+                    <td>Патрулирование</td>
+                </tr>
+                <tr>
+                    <td>2023-06-10</td>
+                    <td>12:00:00</td>
+                    <td>Мониторинг</td>
+                </tr>
+                <tr>
+                    <td>2023-06-10</td>
+                    <td>14:00:00</td>
+                    <td>Зарядка</td>
+                </tr>
+                <tr>
+                    <td>2023-06-11</td>
+                    <td>08:00:00</td>
+                    <td>Патрулирование</td>
+                </tr>
+                <tr>
+                    <td>2023-06-11</td>
+                    <td>10:00:00</td>
+                    <td>Мониторинг</td>
+                </tr>
+                <tr>
+                    <td>2023-06-11</td>
+                    <td>12:00:00</td>
+                    <td>Зарядка</td>
+                </tr>
+                <tr>
+                    <td>2023-06-12</td>
+                    <td>09:00:00</td>
+                    <td>Патрулирование</td>
+                </tr>
+                <tr>
+                    <td>2023-06-12</td>
+                    <td>11:00:00</td>
+                    <td>Мониторинг</td>
+                </tr>
+                <tr>
+                    <td>2023-06-12</td>
+                    <td>13:00:00</td>
+                    <td>Зарядка</td>
+                </tr>
+                <tr>
+                    <td>2023-06-13</td>
+                    <td>10:00:00</td>
+                    <td>Патрулирование</td>
+                </tr>
+                <tr>
+                    <td>2023-06-13</td>
+                    <td>12:00:00</td>
+                    <td>Мониторинг</td>
+                </tr>
+                <tr>
+                    <td>2023-06-13</td>
+                    <td>14:00:00</td>
+                    <td>Зарядка</td>
+                </tr>
+                <tr>
+                    <td>2023-06-14</td>
+                    <td>08:00:00</td>
+                    <td>Патрулирование</td>
+                </tr>
+                <tr>
+                    <td>2023-06-14</td>
+                    <td>10:00:00</td>
+                    <td>Мониторинг</td>
+                </tr>
+                <tr>
+                    <td>2023-06-14</td>
+                    <td>12:00:00</td>
+                    <td>Зарядка</td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="back-link" href="{{ url_for('main_menu') }}">Назад в главное меню</a>
+    </div>
+</body>
+</html>

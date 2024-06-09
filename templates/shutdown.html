@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Выключение</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Выключение</h1>
+        <p>Вы уверены, что хотите выключить дрон?</p>
+        <form action="{{ url_for('perform_shutdown') }}" method="post">
+            <button class="shutdown" type="submit">Да, выключить</button>
+        </form>
+        <a class="back-link" href="{{ url_for('main_menu') }}">Назад в главное меню</a>
+    </div>
+</body>
+</html>

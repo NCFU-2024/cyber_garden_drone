@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мониторинг</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Мониторинг</h1>
+        <div class="drone-status">
+            <p>Модель дрона: {{ drone_state['model'] }}</p>
+            <p>Батарея: {{ drone_state['battery'] }}%</p>
+            <p>Текущая задача: {{ drone_state['current_task'] }}</p>
+            <p>Статус: {{ 'Подключен' if drone_state['connected'] else 'Не подключен' }}</p>
+        </div>
+
+        <h2>Трансляция изображения с дрона</h2>
+        <div class="video-stream">
+            <!-- Placeholder for video stream -->
+            <p>Трансляция изображения загружается...</p>
+            <video id="droneVideo" width="600" controls>
+                <source src="video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео теги.
+            </video>
+        </div>
+
+        <h2>Графики поведения дрона</h2>
+        <div class="chart-container">
+            <canvas id="batteryChart"></canvas>
+            <canvas id="taskChart"></canvas>
+        </div>
+
+        <a class="back-link" href="{{ url_for('main_menu') }}">Назад в главное меню</a>
+    </div>
+
+    <!-- Add Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Battery level chart
+        var ctxBattery = document.getElementById('batteryChart').getContext('2d');
+        var batteryChart = new Chart(ctxBattery, {
+            type: 'line',
+            data: {
+                labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл'],
+                datasets: [{
+                    label: 'Уровень батареи',
+                    data: [100, 90, 80, 70, 60, 50, 40],
+                    borderColor: 'rgba(88, 166, 255, 1)',
+                    backgroundColor: 'rgba(88, 166, 255, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Task chart
+        var ctxTask = document.getElementById('taskChart').getContext('2d');
+        var taskChart = new Chart(ctxTask, {
+            type: 'bar',
+            data: {
+                labels: ['Задача 1', 'Задача 2', 'Задача 3', 'Задача 4'],
+                datasets: [{
+                    label: 'Задачи дрона',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: 'rgba(35, 134, 54, 0.7)',
+                    borderColor: 'rgba(35, 134, 54, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

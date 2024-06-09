@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Патрулирование</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 700px; /* Увеличенный размер карты */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Патрулирование</h1>
+        <div id="map"></div>
+        <button id="confirmButton" disabled>Подтвердить точки</button>
+        <a class="back-link" href="{{ url_for('main_menu') }}">Назад в главное меню</a>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([55.751244, 37.618423], 10); // Центрируем карту на Москву
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        let points = [];
+        const confirmButton = document.getElementById('confirmButton');
+
+        map.on('click', function(e) {
+            if (points.length < 4) {
+                const marker = L.marker(e.latlng).addTo(map);
+                points.push(e.latlng);
+
+                if (points.length === 4) {
+                    confirmButton.disabled = false;
+                }
+            }
+        });
+
+        confirmButton.addEventListener('click', function() {
+            alert('Четыре точки выбраны: ' + points.map(p => `(${p.lat.toFixed(5)}, ${p.lng.toFixed(5)})`).join(', '));
+        });
+    </script>
+</body>
+</html>
